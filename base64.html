@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+
+</head>
+<body>
+</body>
+<!--兼容ie8/9-->
+<!--[if IE]>
+<script src="./base64-polyfill.js"></script>
+<![endif]-->
+<title></title>
+<script>
+    console.log(window.atob('emhhbmd4aW54dQ=='));
+    console.log(window.btoa('emhhbmd4aW54dQ=='));
+    //中文Base64数据转换会报错
+    //------解决方法
+    console.log(window.btoa(window.encodeURIComponent('嘻嘻哈哈哈哈啦啦啦啦')));
+    console.log(window.decodeURIComponent(window.atob('JUU1JTk4JUJCJUU1JTk4JUJCJUU1JTkzJTg4JUU1JTkzJTg4JUU1JTkzJTg4JUU1JTkzJTg4JUU1JTk1JUE2JUU1JTk1JUE2JUU1JTk1JUE2JUU1JTk1JUE2')))
+    //    或者
+    console.log(window.btoa(unescape(encodeURIComponent('嘻嘻哈哈哈哈啦啦啦啦'))));  //----------亲测有问题，转回来就乱咯，鑫旭大神说有用（他用SVG代码测试是OK的）
+    console.log((window.decodeURIComponent(window.atob(window.btoa(unescape(encodeURIComponent('嘻嘻哈哈哈哈啦啦啦啦')))))))
+</script>
+</html>
